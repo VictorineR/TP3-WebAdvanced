@@ -4,7 +4,7 @@ Vue.component('days-of-month',{
 
   data: function() {
     return{
-      principalMonths: ["January", "February", "Mars", "April", "May", "June", "Jully", "August", "September", "October", "November", "December"],
+      principalMonths: ["January", "February", "Mars", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
     }
   },
 
@@ -69,7 +69,7 @@ Vue.component('days-of-year',{
       .then(response => response.json())
       .then(function (data) {
           console.log('data', data);
-          
+
           return data;
       })
     }
