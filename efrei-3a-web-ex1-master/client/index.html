@@ -1,20 +1,22 @@
-<!DOCTYPE html>
-<html lang="fr">
+<!doctype>
+<html lang="en">
     <head>
         <meta charset="utf-8">
         <!-- Load Vue followed by Vue Router -->
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
         <script src="https://unpkg.com/http-vue-loader"></script>
         <script src="http://npmcdn.com/vue-router/dist/vue-router.js"></script>
-        <title>TP3</title>
+
+        <link rel="stylesheet" href="style.css" />
+
+        <title>TP3 - Victor.(1+ine)</title>
     </head>
+
     <body>
         <div id="app">
-          <hello-world></hello-world>
-          <hello-other-world></hello-other-world>
-          <number-days></number-days>
-          <days-month></days-month>
+            <days-of-year v-for="year in years" :year="year"></days-of-year>
         </div>
+        
         <script src="/vue-application.js"></script>
     </body>
 </html>

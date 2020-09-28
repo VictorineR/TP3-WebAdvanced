@@ -1,0 +1,30 @@
+.calendar{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 20px;
+    border: solid 1px;
+    box-shadow: 3px 3px 3px grey;
+    
+}
+
+.month{
+    flex: 1 1 15%;
+    background-color: #fff;
+    margin: 5px;
+    min-width: 100px;
+}
+
+h2, h3{
+    text-align: center;
+}
+
+h2{
+    flex: 1 1 100%;
+    text-decoration: underline;
+    font-size: 28px;
+}
+
+ul{
+    list-style: none;
+    
+}
