@@ -16,12 +16,13 @@ Vue.component('days-of-month',{
       var firstDay = new Date(this.selectedYear, this.selectedMonth - 1, 0).getDay();
       var principalDays=["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
       var daysTable = [];
+     
 
       for (var i = 1; i <= numberDays; i++){
-        daysTable.push(i.toString() +" : " + principalDays[firstDay]);
+        daysTable.push(i.toString() +":" + principalDays[firstDay]);
         firstDay = (firstDay + 1) % 7;
       }
-
+      
       return daysTable; 
     },
 
@@ -47,7 +48,7 @@ Vue.component('days-of-month',{
 
       return this.principalMonths[this.selectedMonth - 1];
     },
-  },
+  }, 
 
   template: `
     <div>
@@ -63,13 +64,17 @@ Vue.component('days-of-month',{
 
 Vue.component('days-of-year',{
   props: ['year'],
+  data : function (){
+    return {
+      ye:this.year,
+      mo :months
+  }},
   computed:{
-    Holidays: function(){
-      fetch('https://date.nager.at/api/v2/PublicHolidays/2020/FR', {mode: 'no-cors'})
+    Holidays: function(){ // the fetch function works, but we don't know how to compute to display it in the calendar
+      fetch('http://vps-4401e6e0.vps.ovh.net/api/v2/PublicHolidays/2020/FR')
       .then(response => response.json())
       .then(function (data) {
           console.log('data', data);
-
           return data;
       })
     }
@@ -80,11 +85,38 @@ Vue.component('days-of-year',{
       <h2>{{year}}</h2>
       <days-of-month v-for="index in 12" v-bind:key="index" :selectedMonth="index" :selectedYear="year" :Holiday="Holidays" class="month"></days-of-month>
     </div>
-  `
+  `,
 })
 
+// let c = {
+//   template: '<hello-world></hello-world>'
+// };
+// const routes = [{
+//   path: '/hello-world',
+//   component: c
+// }];
 
-var app = new Vue({
+// const HelloOtherWorld = window.httpVueLoader('./components/HelloOtherWorld.vue')
+
+// const HelloOtherWorld = {template: '<div>hello-world</div>'}
+
+
+// const vm = new Vue({
+//   router
+// }).$mount('#vm')
+
+
+// Vue.component('hello-world', {
+//   data: function () {
+//     return {
+//       message: ', World'
+//     }
+//   },
+//   template: `<p>Hello{{ message }}!</p>`
+// }) 
+
+
+ const app = new Vue({
   el: '#app',
   data:{
     years: [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020],
